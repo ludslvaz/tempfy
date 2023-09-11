@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de Temperatura</h1>
+        <label for="tipoTemperatura"></label>
+        <select id="tipoTemperatura" >
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select>
+        <br>
+        <label for="tempInput" placeholder="Digite a temperatura:"></label>
+        <input type="number" id="tempInput">
+        <br>
+        <button onclick="converterTemperatura()">Calcular</button>
+        <br>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function converterTemperatura() {
+            // Obtém os valores do tipo de temperatura e temperatura digitada pelo usuário
+            const tipoTemperatura = document.getElementById("tipoTemperatura").value;
+            const temperatura = document.getElementById("tempInput").value;
+
+            // Realiza as conversões de temperatura
+            var resultado = "";
+            if (tipoTemperatura === "celsius") {
+                resultado = `Fahrenheit: ${(temperatura * 9/5) + 32}°F, Kelvin: ${temperatura + 273.15}K`;
+            } else if (tipoTemperatura === "fahrenheit") {
+                resultado = `Celsius: ${(temperatura - 32) * 5/9}°C, Kelvin: ${(temperatura - 32) * 5/9 + 273.15}K`;
+            } else if(tipoTemperatura === "kelvin") {
+                resultado = `Celsius: ${temperatura - 273.15}°C, Fahrenheit: ${(temperatura - 273.15) * 9/5 + 32}°F`;
+            }
+
+            // Exibe o resultado
+            document.getElementById("resultado").textContent = resultado;
+        }
+    </script>
+</body>
+</html>
